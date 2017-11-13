@@ -1,6 +1,7 @@
 @import './../../styles/breakpoints.scss';
 @import './../../styles/mixins.scss';
 @import './../../styles/theme.scss';
+@import './../../styles/globals.scss';
 
 .Menu {
 
@@ -12,6 +13,7 @@
   }
 
   .menuGrid {
+    @include fade-in(1s);
     align-self: center;
     align-items: center;
     width:100%;
@@ -23,6 +25,8 @@
     align-content: center;
 
     .item {
+      @extend .Globals-clickable;
+      @extend .Globals-noselect;
       padding: 1em;
       height: 1em;
       margin: 1em;
@@ -37,44 +41,36 @@
 
       @media #{$lt-sm} {
         width: 100%;
+        padding-top: 1em;
+        padding-bottom: 1em;
+      }
+
+      @media #{$gt-xs} {
+        width: 30%;
+        max-width: 600px;
 
         @media #{$height-sm} {
           padding-top: 1em;
           padding-bottom: 1em;
         }
         @media #{$height-normal} {
-          padding-top: 3em;
-          padding-bottom: 3em;
+          padding-top: 2.5em;
+          padding-bottom: 2.5em;
         }
-      }
-
-      @media #{$gt-xs} {
-        width: 30%;
-        max-width: 600px;
-        padding-top: 3em;
-        padding-bottom: 3em;
-      }
-
-      @media (orientation:landscape) {
-        padding-top: 1em;
-        padding-bottom: 1em;
       }
 
       &.selected {
         box-shadow: inset 0 0 0 0.2em $ui-color-lighter;
         color: $ui-color-darker;
       }
-
       @include animation-ease(0.4s);
       &:hover {
         box-shadow: inset 0 0 0 0.2em gray;
         color: $ui-color-darker;
-        cursor: pointer;
         @include animation-ease(0.4s);
       }
       &:active {
         color: $ui-color-darker;
-        cursor: pointer;
         @include animation-ease(0.2s);
       }
     }

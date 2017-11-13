@@ -1,6 +1,7 @@
 @import '../../styles/breakpoints.scss';
 @import '../../styles/mixins.scss';
 @import './../../styles/theme.scss';
+@import './../../styles/globals.scss';
 
 .Home {
 
@@ -42,6 +43,9 @@
   }
 
   .button {
+
+    @extend .Globals-clickable;
+    @extend .Globals-noselect;
     display: grid;
     align-self: center;
     justify-self: center;
@@ -69,12 +73,10 @@
     &:hover {
       box-shadow: inset 0 0 0 0.2em $ui-color-lighter;
       color: $ui-color-darker;
-      cursor: pointer;
       @include animation-ease(0.4s);
     }
     &:active {
       color: #5f5f5f;
-      cursor: pointer;
       @include animation-ease(0.2s);
     }
   }
