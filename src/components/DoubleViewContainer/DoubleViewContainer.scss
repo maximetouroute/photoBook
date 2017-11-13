@@ -1,10 +1,11 @@
 @import './../../styles/breakpoints.scss';
 @import './../../styles/mixins.scss';
+@import './../../styles/theme.scss';
 
 .DoubleViewContainer {
   .topView {
     transition: all 0.4s ease-in-out;
-    background-color: rgb(220,220,220);
+    background-color: $background-color-darker;
   }
 
   .bottomView {
@@ -13,7 +14,7 @@
 
     .transitionZone {
       padding-top: 5em;
-      background-color: rgb(220,220,220);
+      background-color: $background-color-darker;
     }
   }
 }

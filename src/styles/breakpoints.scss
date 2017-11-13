@@ -14,3 +14,6 @@ $gt-sm: (screen and (min-width: 960px));
 $gt-md: (screen and (min-width: 1280px));
 $gt-lg: (screen and (min-width: 1920px));
 
+
+$height-sm: (screen and (max-height: 599px));
+$height-normal: (screen and (min-height: 600px));

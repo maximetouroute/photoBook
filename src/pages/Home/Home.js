@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { BackgroundSlideshow } from './../../components/BackgroundSlideshow/BackgroundSlideshow';
-import { slideshow } from '../../content/config';
+import { slideshow } from '../../content/content';
 import { Link } from 'react-router-dom'
 import './Home.css';
+import { homePunchline, photographerName} from './../../content/content';
 
 export const Home = () => (
     <div className="Home">
         <div className="mainGrid">
             <div className="message">
                 <div>
-                    <div className="text big">Maxime Touroute</div>
-                    <div className="text small">I do photos.</div>
+                    <div className="text big">{photographerName}</div>
+                    <div className="text small">{homePunchline}</div>
                 </div>
                 <Link to={process.env.PUBLIC_URL + '/book'} className="button">SHOW ME</Link>
             </div>

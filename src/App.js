@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Home } from './pages/Home/Home';
 import { Book } from './pages/Book/Book';
-import { gallery } from './content/config';
+import { gallery } from './content/content';
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 class App extends Component {
