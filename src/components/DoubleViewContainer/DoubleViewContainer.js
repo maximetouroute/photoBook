@@ -45,13 +45,15 @@ export class DoubleViewContainer extends Component {
     }
 
     handleScroll(event) {
-        let scrollTop = document.body.scrollTop;
+        let scrollingElement = document.scrollingElement || document.documentElement;
+        let scrollTop = scrollingElement.scrollTop ;
         const delta = -event.deltaY;
         if ( delta < 0 ) {
             if ( this.state.currentView === 'top' ) {
                 this.setState({currentView: 'bottom'});
             }
         } else if ( delta > 0 && scrollTop < 100) {
+            console.log('scrolltop:' + scrollTop);
             if ( this.state.currentView === 'bottom' ) {
                 this.setState({currentView: "top"});
             }
