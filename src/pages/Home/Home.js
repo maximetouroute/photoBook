@@ -12,7 +12,7 @@ export const Home = () => (
                     <div className="text big">Maxime Touroute</div>
                     <div className="text small">I do photos.</div>
                 </div>
-                <Link to="/book" className="button">SHOW ME</Link>
+                <Link to={process.env.PUBLIC_URL + '/book'} className="button">SHOW ME</Link>
             </div>
             <div className="slideShow">
                 <BackgroundSlideshow className="fillPage" photos={slideshow} speed={5}/>

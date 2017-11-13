@@ -1,8 +1,8 @@
 {
-  "name": "portfolio",
+  "name": "photoBook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://maximetouroute.github.io/photoBook",
+  "homepage": "https://maximetouroute.github.io/photoBook",
   "dependencies": {
     "node-sass-chokidar": "0.0.3",
     "react": "^16.0.0",

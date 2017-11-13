@@ -20,6 +20,7 @@
 
 #Dev Photos
 /public/res
+/src/res
 
 # misc
 .DS_Store

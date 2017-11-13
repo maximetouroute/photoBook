@@ -11,7 +11,7 @@ class App extends Component {
         super(props);
         this.state = {
             book: () => (<Book gallery={gallery}/>)
-        }
+        };
     }
 
     render() {
@@ -19,8 +19,8 @@ class App extends Component {
             <div className="App">
                 <Router>
                     <div>
-                        <Route exact path="/" component={Home}/>
-                        <Route path="/book" component={this.state.book}/>
+                        <Route exact path={process.env.PUBLIC_URL + '/'} component={Home}/>
+                        <Route path={process.env.PUBLIC_URL + '/book'} component={this.state.book}/>
                     </div>
                 </Router>
             </div>
