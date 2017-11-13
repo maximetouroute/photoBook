@@ -12,6 +12,8 @@ export class DoubleViewContainer extends Component {
         };
         this.handleScroll = this.handleScroll.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleWheel = this.handleWheel.bind(this);
+        this.previousScrollTop = (document.scrollingElement || document.documentElement).scrollTop;
     }
 
     componentWillReceiveProps(nextProps) {
@@ -20,13 +22,15 @@ export class DoubleViewContainer extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('wheel', this.handleScroll);
+        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('wheel', this.handleWheel);
         window.addEventListener('keydown', this.handleKeyDown);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('wheel', this.handleScroll);
-        window.addEventListener('keydown', this.handleKeyDown);
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('keydown', this.handleKeyDown);
+        window.removeEventListener('wheel', this.handleWheel);
     }
 
     handleKeyDown(event) {
@@ -44,16 +48,23 @@ export class DoubleViewContainer extends Component {
         }
     }
 
+    handleWheel(event) {
+        if ( event.deltaY > 0 && this.state.currentView === 'top' ) {
+            this.setState({currentView: 'bottom'});
+        }
+    }
+
     handleScroll(event) {
         let scrollingElement = document.scrollingElement || document.documentElement;
-        let scrollTop = scrollingElement.scrollTop ;
-        const delta = -event.deltaY;
+        let scrollTop = scrollingElement.scrollTop;
+        const delta = -(scrollTop - this.previousScrollTop);
+        this.previousScrollTop = scrollTop;
         if ( delta < 0 ) {
             if ( this.state.currentView === 'top' ) {
                 this.setState({currentView: 'bottom'});
             }
         } else if ( delta > 0 && scrollTop < 100) {
-            console.log('scrolltop:' + scrollTop);
+
             if ( this.state.currentView === 'bottom' ) {
                 this.setState({currentView: "top"});
             }
