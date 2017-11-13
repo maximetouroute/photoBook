@@ -16,7 +16,7 @@
 /build
 
 #SASS
-/src/*.css
+/src/**/*.css
 
 #Dev Photos
 /public/res
