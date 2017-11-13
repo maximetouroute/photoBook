@@ -47,6 +47,11 @@
         padding-bottom: 3em;
       }
 
+      &.selected {
+        box-shadow: inset 0 0 0 0.2em gray;
+        color: #5f5f5f;
+      }
+
       @include animation-ease(0.4s);
       &:hover {
         box-shadow: inset 0 0 0 0.2em gray;

@@ -10,79 +10,58 @@ export class DoubleViewContainer extends Component {
         this.state = {
             currentView: props.currentView
         };
-        this.handleScroll = this.handleScroll.bind(this);
-        this.handleKeyDown = this.handleKeyDown.bind(this);
-        this.handleWheel = this.handleWheel.bind(this);
+
         this.previousScrollTop = (document.scrollingElement || document.documentElement).scrollTop;
     }
 
     componentWillReceiveProps(nextProps) {
         // Manual change view workarround
         this.setState({currentView: nextProps.currentView});
+        this.smoothScroll(Math.max(document.documentElement.clientHeight, window.innerHeight || 0));
     }
 
-    componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
-        window.addEventListener('wheel', this.handleWheel);
-        window.addEventListener('keydown', this.handleKeyDown);
+    currentYPosition() {
+        // Firefox, Chrome, Opera, Safari
+        if (window.pageYOffset) return window.pageYOffset;
+        // Internet Explorer 6 - standards mode
+        if (document.documentElement && document.documentElement.scrollTop)
+            return document.documentElement.scrollTop;
+        // Internet Explorer 6, 7 and 8
+        if (document.body.scrollTop) return document.body.scrollTop;
+        return 0;
     }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-        window.removeEventListener('keydown', this.handleKeyDown);
-        window.removeEventListener('wheel', this.handleWheel);
-    }
-
-    handleKeyDown(event) {
-        switch(event.key) {
-            case 'ArrowUp':
-                if( document.body.scrollTop < 100  && this.state.currentView === 'bottom' ) {
-                    this.setState({currentView: 'top'});
-                }
-                break;
-            case 'ArrowDown':
-                if( this.state.currentView === 'top' ) {
-                    this.setState({currentView: 'bottom'});
-                }
-                break;
+    smoothScroll(newY) {
+        let startY = this.currentYPosition();
+        let stopY = newY;
+        let distance = stopY > startY ? stopY - startY : startY - stopY;
+        if (distance < 100) {
+            window.scrollTo(0, stopY); return;
+        }
+        let speed = 15;
+        if (speed >= 20) speed = 20;
+        let step = Math.round(distance / 25);
+        let leapY = stopY > startY ? startY + step : startY - step;
+        let timer = 0;
+        if (stopY > startY) {
+            for ( let i=startY; i<stopY; i+=step ) {
+                setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+                leapY += step; if (leapY > stopY) leapY = stopY; timer++;
+            } return;
+        }
+        for ( let i=startY; i>stopY; i-=step ) {
+            setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+            leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
         }
     }
 
-    handleWheel(event) {
-        if ( event.deltaY > 0 && this.state.currentView === 'top' ) {
-            this.setState({currentView: 'bottom'});
-        }
-    }
 
-    handleScroll(event) {
-        let scrollingElement = document.scrollingElement || document.documentElement;
-        let scrollTop = scrollingElement.scrollTop;
-        const delta = -(scrollTop - this.previousScrollTop);
-        this.previousScrollTop = scrollTop;
-        if ( delta < 0 ) {
-            if ( this.state.currentView === 'top' ) {
-                this.setState({currentView: 'bottom'});
-            }
-        } else if ( delta > 0 && scrollTop < 100) {
 
-            if ( this.state.currentView === 'bottom' ) {
-                this.setState({currentView: "top"});
-            }
-        }
-    }
 
     render() {
 
-        let topViewStyle = {};
-        let bottomViewStyle = {};
 
-        if ( this.state.currentView === 'bottom' ) {
-            topViewStyle = {height: '0', opacity: 0, pointerEvents: 'none'};
-            bottomViewStyle = {height:'100vh', opacity: 1};
-        } else {
-            topViewStyle = {height: '100vh', opacity: 1 };
-            bottomViewStyle = {height: '0', overflow: 'hidden', opacity: 0, pointerEvents: 'none'};
-        }
+        let bottomViewStyle = {height:'100vh', opacity: 1};
+        let topViewStyle = {height: '100vh', opacity: 1 };
 
         return (
             <div className="DoubleViewContainer">
@@ -91,7 +70,7 @@ export class DoubleViewContainer extends Component {
                 </div>
 
                 <div className="bottomView" style={bottomViewStyle}>
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <div className="transitionZone"/>
                     {this.props.bottomView}</div>
             </div>
         );

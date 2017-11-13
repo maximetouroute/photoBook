@@ -6,6 +6,9 @@ export class Menu extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            currentActiveElementIndex:0
+        };
         this.onMenuClick = this.onMenuClick.bind(this);
     }
 
@@ -13,16 +16,25 @@ export class Menu extends Component {
         if (typeof this.props.onMenuClick === "function") {
             this.props.onMenuClick(name);
         }
+        this.setState({currentActiveElementIndex:this.props.collections.indexOf(name)});
     }
 
     menuItems() {
+
+        const menuItems = [];
+        for (let i = 0 ; i < this.props.collections.length ; i++) {
+            const collectionName = this.props.collections[i];
+            const className = (this.state.currentActiveElementIndex === i) ? 'item selected' : 'item';
+            menuItems.push(
+                (<div className={className} key={collectionName} onClick={() => this.onMenuClick(collectionName)}>
+                <div>{collectionName}</div>
+            </div>)
+            );
+
+        }
         return (
             <div className="menuGrid">
-                {this.props.collections.map((collectionName) => {
-                    return (<div className="item" key={collectionName} onClick={() => this.onMenuClick(collectionName)}>
-                        <div>{collectionName}</div>
-                    </div>);
-                })}
+                {menuItems}
             </div>);
     }
 

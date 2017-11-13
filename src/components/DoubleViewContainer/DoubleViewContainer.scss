@@ -10,6 +10,10 @@
   .bottomView {
     transition: all 0.4s ease-in-out;
     background-color: whitesmoke;
-    box-shadow: inset 0 12em 0 0 rgb(230,230,230);
+
+    .transitionZone {
+      padding-top: 5em;
+      background-color: rgb(220,220,220);
+    }
   }
 }
