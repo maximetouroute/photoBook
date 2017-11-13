@@ -34,7 +34,7 @@ import p2 from './../res/portraits/b-12.jpg';
 
 import profilePicture from './../res/profile.png';
 const portraitPhotos = [p1, p2];
-const experimentsPhotos = [e0, e1, e2, e3, e4, e5, e6, e7, e8];
+const experimentsPhotos = [e1, e2, e3, e4, e5, e6, e7, e0, e8];
 const dailiesPhotos = [d1, d2, d3, d4, d5, d6];
 const landscapePhotos = [l2, l3, l4, l5];
 
@@ -94,3 +94,6 @@ export const gallery = [
 ];
 
 export const slideshow = [l2, l5, e0];
+
+export const photographerName = 'Maxime Touroute';
+export const homePunchline = "I do photos.";
