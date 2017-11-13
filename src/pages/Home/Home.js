@@ -15,7 +15,7 @@ export const Home = () => (
                 <Link to="/book" className="button">SHOW ME</Link>
             </div>
             <div className="slideShow">
-                <BackgroundSlideshow className="fillPage" photos={slideshow} speed={7}/>
+                <BackgroundSlideshow className="fillPage" photos={slideshow} speed={5}/>
             </div>
         </div>
     </div>
