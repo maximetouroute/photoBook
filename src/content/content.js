@@ -45,7 +45,7 @@ import e11 from './../res/experiments/b-1.jpg';
 import p1 from './../res/portraits/b-9.jpg';
 import p2 from './../res/portraits/b-12.jpg';
 
-import profilePicture from './../res/profile.png';
+import profilePicture from './../res/profile.jpg';
 
 const portraitPhotos = [p1, p2];
 const experimentsPhotos = [e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11];
