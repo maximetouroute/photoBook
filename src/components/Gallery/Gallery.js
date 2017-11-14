@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Gallery.css';
 import Lightbox from 'react-image-lightbox';
 import PropTypes from 'prop-types';
+import { LazyLoadImage } from './../../components/LazyLoadImage/LazyLoadImage';
 
 export class Gallery extends Component {
 
@@ -16,8 +17,8 @@ export class Gallery extends Component {
     photos() {
         let photosArray = [];
         for (let i = 0 ; i < this.props.photos.length ; i++) {
-            photosArray.push( <div className="imageContainer">
-                <img onClick={() => this.setState({ isOpen: true, photoIndex:i })} src={this.props.photos[i]}/>
+            photosArray.push( <div className="imageContainer" onClick={() => this.setState({ isOpen: true, photoIndex:i })} >
+                <LazyLoadImage src={this.props.photos[i]}/>
             </div>);
         }
         return (
