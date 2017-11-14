@@ -22,12 +22,12 @@ export class Book extends Component {
         for(let i = 0 ; i < this.state.galleryNames.length ; i++) {
             let menuName = this.state.galleryNames[i];
             if ( name === menuName ) {
-                this.switchView(name);
+                this.changeGallery(name);
             }
         }
     }
 
-    switchView(name) {
+    changeGallery(name) {
         this.setState((previousState) => {
             return {
                 selectedGallery: previousState.galleryNames.indexOf(name),

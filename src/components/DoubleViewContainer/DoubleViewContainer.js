@@ -10,14 +10,23 @@ export class DoubleViewContainer extends Component {
         this.state = {
             currentView: props.currentView
         };
+    }
 
-        this.previousScrollTop = (document.scrollingElement || document.documentElement).scrollTop;
+    componentDidMount() {
+        this.smoothScroll(Math.max(document.documentElement.clientHeight, window.innerHeight || 0));
     }
 
     componentWillReceiveProps(nextProps) {
         // Manual change view workarround
         this.setState({currentView: nextProps.currentView});
-        this.smoothScroll(Math.max(document.documentElement.clientHeight, window.innerHeight || 0));
+        switch(nextProps.currentView) {
+            case 'top':
+                this.smoothScroll(0);
+                break;
+            case 'bottom':
+                this.smoothScroll(Math.max(document.documentElement.clientHeight, window.innerHeight || 0));
+                break;
+        }
     }
 
     currentYPosition() {
@@ -30,6 +39,7 @@ export class DoubleViewContainer extends Component {
         if (document.body.scrollTop) return document.body.scrollTop;
         return 0;
     }
+
     smoothScroll(newY) {
         let startY = this.currentYPosition();
         let stopY = newY;
@@ -54,12 +64,7 @@ export class DoubleViewContainer extends Component {
         }
     }
 
-
-
-
     render() {
-
-
         let bottomViewStyle = {height:'100vh', opacity: 1};
         let topViewStyle = {height: '100vh', opacity: 1 };
 
