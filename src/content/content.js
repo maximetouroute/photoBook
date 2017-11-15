@@ -12,9 +12,8 @@ import l6 from './../res/landscapes/b-40.jpg';
 import l7 from './../res/landscapes/b-9.jpg';
 import l8 from './../res/landscapes/b-44.jpg';
 import l9 from './../res/landscapes/b-46.jpg';
-import l10 from './../res/landscapes/b-9.jpg';
-import l11 from './../res/landscapes/b-38.jpg';
-import l12 from './../res/landscapes/b-35.jpg';
+import l10 from './../res/landscapes/b-38.jpg';
+import l11 from './../res/landscapes/b-35.jpg';
 // Dailies
 import d1 from './../res/dailies/b-4.jpg';
 import d2 from './../res/dailies/b-11.jpg';
@@ -50,7 +49,7 @@ import profilePicture from './../res/profile.jpg';
 const portraitPhotos = [p1, p2];
 const experimentsPhotos = [e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11];
 const dailiesPhotos = [d1, d2, d3, d10, d4, d5, d6, d7, d8, d9];
-const landscapePhotos = [l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12];
+const landscapePhotos = [l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11];
 
 const aboutPage = (<div>
 
