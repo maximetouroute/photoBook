@@ -59,7 +59,7 @@ const aboutPage = (<div>
         <div>
             I'm passionate about audiovisual arts and been working on <b>movies</b>, <b>photos</b>, and <b>musics</b> for a few years.
             This website as you guessed is strictly about the photos part of it.
-            For more information about me and my projects check out my <a href="https://maximetouroute.github.io">Portfolio page</a>
+            For more information about me and my projects check out my <a href="https://maximetouroute.github.io">Personal website</a>
         </div>
     </div>
 );
