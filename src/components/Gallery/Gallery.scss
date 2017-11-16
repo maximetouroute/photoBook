@@ -65,14 +65,13 @@
       margin: 0;
     }
     @media #{$gt-sm} {
-
       max-width: 800px;
       border: 1px solid $ui-color-lighter;
       padding: 2.5em;
       margin-top: 1em;
       margin-bottom: 1em;
       &:hover {
-        box-shadow: inset 0 0 0 3px $ui-color-lightest;
+        box-shadow: inset 0 0 0 1px $ui-color-lightest;
         @include animation-ease(0.2s);
       }
     }
@@ -101,11 +100,8 @@
     text-align: justify;
 
     @media #{$lt-sm} {
-     padding-left: 0;
+      padding-left: 0;
       padding-right: 0;
-    }
-    @media #{$gt-md} {
-
     }
 
     h1 {
@@ -167,5 +163,4 @@
       grid-template-columns: 30% 70%;
     }
   }
-
 }
