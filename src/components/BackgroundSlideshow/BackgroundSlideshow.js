@@ -6,8 +6,17 @@ export class BackgroundSlideshow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fileIndex:0
+            fileIndex:0,
+            loadedPhotos: []
         };
+
+        this.photosToLoad = this.props.photos;
+        this.photoLoader = null;
+
+        this.photoLoaderOnLoadProcess = () => {
+            this.setState({loadedPhotos:[...this.state.loadedPhotos, this.currentLoadingSrc]});
+            this.startLoadingNewPhoto();
+        }
     }
 
     componentDidMount() {
@@ -15,6 +24,16 @@ export class BackgroundSlideshow extends Component {
             () => this.tick(),
             this.props.speed*1000
         );
+        this.startLoadingNewPhoto();
+    }
+
+    startLoadingNewPhoto() {
+        if ( this.photosToLoad.length > 0) {
+            this.photoLoader = new Image();
+            this.photoLoader.onload = this.photoLoaderOnLoadProcess;
+            this.currentLoadingSrc = this.photosToLoad.pop();
+            this.photoLoader.src = this.currentLoadingSrc;
+        }
     }
 
     componentWillUnmount() {
@@ -24,7 +43,7 @@ export class BackgroundSlideshow extends Component {
     tick() {
         this.setState((previousState, props) => {
             let newCurrentIndex;
-            if ( props.photos.length <= previousState.fileIndex+1 ) {
+            if ( this.state.loadedPhotos.length <= previousState.fileIndex+1 ) {
                 newCurrentIndex = 0;
             } else {
                 newCurrentIndex = previousState.fileIndex+1;
@@ -35,7 +54,7 @@ export class BackgroundSlideshow extends Component {
     }
 
     render() {
-        return <FadeImage src={this.props.photos[this.state.fileIndex]}/>;
+        return <FadeImage src={this.state.loadedPhotos[this.state.fileIndex]}/>;
     }
 }
 
