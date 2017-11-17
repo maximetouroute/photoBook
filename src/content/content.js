@@ -54,7 +54,7 @@ const landscapePhotos = [l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11];
 const aboutPage = (<div>
 
         <h3>Maxime Touroute</h3>
-        <img src= {profilePicture} width="200px"/>
+        <img src= {profilePicture} alt="profile" width="200px"/>
         <div style={{fontSize:'0.9em'}}>
             I'm passionate about audiovisual arts and been working on <b>movies</b>, <b>photos</b>, and <b>musics</b> for a few years.
             This website as you guessed is strictly about the photos part of it.

@@ -26,6 +26,8 @@ export class DoubleViewContainer extends Component {
             case 'bottom':
                 this.smoothScroll(Math.max(document.documentElement.clientHeight, window.innerHeight || 0));
                 break;
+            default:
+                break;
         }
     }
 
@@ -54,19 +56,21 @@ export class DoubleViewContainer extends Component {
         let timer = 0;
         if (stopY > startY) {
             for ( let i=startY; i<stopY; i+=step ) {
-                setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+                const loopLeapY = Number(leapY); // Ceating object copy
+                setTimeout(() => window.scrollTo(0, loopLeapY), timer * speed);
                 leapY += step; if (leapY > stopY) leapY = stopY; timer++;
             } return;
         }
         for ( let i=startY; i>stopY; i-=step ) {
-            setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+            const loopLeapY = leapY;
+            setTimeout(() => window.scrollTo(0, loopLeapY), timer * speed);
             leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
         }
     }
 
     render() {
-        let bottomViewStyle = {height:'100vh', opacity: 1};
-        let topViewStyle = {height: '100vh', opacity: 1 };
+        let bottomViewStyle = {height:'100vh'};
+        let topViewStyle = {height: '100vh'};
 
         return (
             <div className="DoubleViewContainer">

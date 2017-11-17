@@ -55,7 +55,7 @@ export class LazyLoadImage extends Component {
     render() {
         return (
             <div className="LazyLoad">
-                <img src={this.state.ref.src} ref={elem => this.state.ref = elem}/>
+                <img src={this.state.ref.src} alt="" ref={elem => this.setState({ref: elem})}/>
             </div>
         )
     }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BackgroundSlideshow } from './../../components/BackgroundSlideshow/BackgroundSlideshow';
 import { slideshow } from '../../content/content';
 import { Link } from 'react-router-dom'
