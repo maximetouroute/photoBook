@@ -17,14 +17,13 @@ export class Gallery extends Component {
     photos() {
         let photosArray = [];
         for (let i = 0 ; i < this.props.photos.length ; i++) {
-            photosArray.push( <div className="imageContainer" onClick={() => this.setState({ isOpen: true, photoIndex:i })} >
-                <LazyLoadImage src={this.props.photos[i]}/>
+            photosArray.push( <div className="imageContainer" onClick={() => this.setState({ isOpen: true, photoIndex:i })} key={i}>
+                <LazyLoadImage src={this.props.photos[i]} />
             </div>);
         }
         return (
             <div className="gridWrapperr">
                 <div className="gridMiddleCentered">
-
                     {photosArray}
                 </div>
             </div>

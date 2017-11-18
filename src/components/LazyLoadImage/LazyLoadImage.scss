@@ -1,6 +1,5 @@
 .LazyLoad {
   position: relative;
-
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -10,4 +9,13 @@
     height: auto;
   }
 }
+
+.loadingImage {
+  animation: opacityBlink infinite 1.5s linear;
+}
+
+@keyframes opacityBlink
+{0%{opacity:1;} 50%{opacity:0.3;} 100%{opacity:1;}}
+
+
 
