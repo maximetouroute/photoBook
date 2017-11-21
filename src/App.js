@@ -19,7 +19,7 @@ class App extends Component {
             <div className="App">
                 <Router>
                     <div>
-                        <Route exact path={process.env.PUBLIC_URL + '/'} component={Home}/>
+                        <Route exact path={process.env.PUBLIC_URL} component={Home}/>
                         <Route path={process.env.PUBLIC_URL + '/book'} component={this.state.book}/>
                     </div>
                 </Router>
