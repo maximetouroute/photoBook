@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './DoubleViewContainer.css';
 import PropTypes from 'prop-types';
 
-
 export class DoubleViewContainer extends Component {
 
     constructor(props) {
@@ -17,7 +16,7 @@ export class DoubleViewContainer extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        // Manual change view workarround
+        // Manual change workarround
         this.setState({currentView: nextProps.currentView});
         switch(nextProps.currentView) {
             case 'top':
