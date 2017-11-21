@@ -10,7 +10,7 @@ export class BackgroundSlideshow extends Component {
             loadedPhotos: []
         };
 
-        this.photosToLoad = this.props.photos;
+        this.photosToLoad = this.props.photos.slice(); // .slice Otherwise you alter the imported array
         this.photoLoader = null;
 
         this.photoLoaderOnLoadProcess = () => {
