@@ -94,14 +94,14 @@
 
   .description {
     color: $ui-color;
-    font-size: 1.5em;
+    font-size: 1.1rem;
     display: grid;
     justify-content: center;
     text-align: justify;
 
     @media #{$lt-sm} {
-      padding-left: 0;
-      padding-right: 0;
+      padding-left: 0em;
+      padding-right: 0em;
     }
 
     h1 {
@@ -128,6 +128,11 @@
       padding-bottom: 2em;
       padding-top: 2em;
       line-height: 2em;
+
+      @media #{$lt-sm} {
+        padding-left: 0.3em;
+        padding-right: 0.3em;
+      }
     }
   }
 
