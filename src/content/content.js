@@ -59,9 +59,9 @@ const aboutPage = (<div>
         <h3>Maxime Touroute</h3>
         <img src= {profilePicture} alt="profile" width="200px"/>
         <div style={{fontSize:'1rem'}}>
-            I'm passionate about audiovisual arts and been working on <b>movies</b>, <b>photos</b>, and <b>musics</b> for a few years.
+            I'm passionate about audiovisual arts and I have been working on <b>movies</b>, <b>photos</b>, and <b>musics</b> for a few years.
             This website as you guessed is strictly about the photos part of it.
-            For more information about me and my projects check out my <a href="https://maximetouroute.github.io">Personal website</a>
+            For more information about me and my projects check out my <a href="https://maximetouroute.github.io">portfolio website</a>
         </div>
     </div>
 );
