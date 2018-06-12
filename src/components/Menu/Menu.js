@@ -7,7 +7,7 @@ export class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentActiveElementIndex:0
+            currentActiveElementIndex: -1
         };
         this.onMenuClick = this.onMenuClick.bind(this);
     }

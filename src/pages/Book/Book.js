@@ -14,7 +14,7 @@ class Book extends Component {
             gallery: props.gallery,
             galleryPhotos: props.gallery.map(gallery => gallery.photos),
             galleryNames: props.gallery.map(gallery => gallery.name),
-            selectedGallery: 0,
+            selectedGallery: -1,
             manualChangeView: 'bottom'
         };
         this.handleMenuClick = this.handleMenuClick.bind(this);
@@ -65,9 +65,15 @@ class Book extends Component {
     }
 
     gallery() {
-        return (<Gallery photos={this.state.galleryPhotos[this.state.selectedGallery]}
-                         name={this.state.galleryNames[this.state.selectedGallery]}
-                         description={this.state.gallery[this.state.selectedGallery].description}/>);
+        if(this.state.selectedGallery === -1) {
+            return (<div></div>)
+        }
+        else {
+            return (<Gallery photos={this.state.galleryPhotos[this.state.selectedGallery]}
+                             name={this.state.galleryNames[this.state.selectedGallery]}
+                             description={this.state.gallery[this.state.selectedGallery].description}/>);
+        }
+
     }
 
     menu() {
