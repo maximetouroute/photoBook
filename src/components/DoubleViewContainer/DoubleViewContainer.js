@@ -12,7 +12,7 @@ export class DoubleViewContainer extends Component {
     }
 
     componentDidMount() {
-        this.smoothScroll(Math.max(document.documentElement.clientHeight, window.innerHeight || 0));
+        this.smoothScroll(0);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -45,31 +45,17 @@ export class DoubleViewContainer extends Component {
         let startY = this.currentYPosition();
         let stopY = newY;
         let distance = stopY > startY ? stopY - startY : startY - stopY;
-        if (distance < 100) {
-            window.scrollTo(0, stopY); return;
-        }
-        let speed = 15;
-        if (speed >= 20) speed = 20;
-        let step = Math.round(distance / 25);
-        let leapY = stopY > startY ? startY + step : startY - step;
-        let timer = 0;
-        if (stopY > startY) {
-            for ( let i=startY; i<stopY; i+=step ) {
-                const loopLeapY = Number(leapY); // Ceating object copy
-                setTimeout(() => window.scrollTo(0, loopLeapY), timer * speed);
-                leapY += step; if (leapY > stopY) leapY = stopY; timer++;
-            } return;
-        }
-        for ( let i=startY; i>stopY; i-=step ) {
-            const loopLeapY = leapY;
-            setTimeout(() => window.scrollTo(0, loopLeapY), timer * speed);
-            leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
-        }
+        let distanceFromTop = distance + startY;
+        // Encapsulated in asynchronous call to make it work on firefox. But... why?
+        window.setTimeout(()=>{
+            window.scrollBy({top: -startY, left: 0, behavior: 'instant'});
+            window.scrollBy({top: distanceFromTop, left: 0, behavior: 'smooth'});
+        }, 0);
     }
 
     render() {
-        let bottomViewStyle = {height:'100vh'};
-        let topViewStyle = {height: '100vh'};
+        let bottomViewStyle = {height:'100%'};
+        let topViewStyle = {height: '100%'};
 
         return (
             <div className="DoubleViewContainer">

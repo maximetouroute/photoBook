@@ -5,7 +5,7 @@
 .DoubleViewContainer {
   .topView {
     transition: all 0.4s ease-in-out;
-    background-color: $background-color-darker;
+    background-color: $background-color-lighter;
   }
 
   .bottomView {
@@ -13,8 +13,8 @@
     background-color: whitesmoke;
 
     .transitionZone {
-      padding-top: 5em;
-      background-color: $background-color-darker;
+      padding-top: 2em;
+      background-color: $background-color-lighter;
     }
   }
 }
