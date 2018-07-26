@@ -46,10 +46,13 @@ import p2 from './../res/portraits/b-19.jpg';
 import p3 from './../res/portraits/b-20.jpg';
 import p4 from './../res/portraits/b-21.jpg';
 import p5 from './../res/portraits/b-12.jpg';
+import p6 from './../res/portraits/b-40.jpg';
+import p7 from './../res/portraits/b-41.jpg';
+import p8 from './../res/portraits/b-42.jpg';
 
 import profilePicture from './../res/profile.jpg';
 
-const portraitPhotos = [p1, p2, p3, p4, p5];
+const portraitPhotos = [p1, p6, p7, p8, p2, p3, p4, p5];
 const experimentsPhotos = [e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11];
 const dailiesPhotos = [d1, d2, d3, d10, d4, d5, d6, d7, d8, d9];
 const landscapePhotos = [l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11];
