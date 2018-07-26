@@ -59,10 +59,11 @@ const landscapePhotos = [l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11];
 
 const aboutPage = (<div>
 
-        <h3>Maxime Touroute</h3>
+        <h3>Hi, I'm Maxime</h3>
         <img src= {profilePicture} alt="profile" width="200px"/>
         <div style={{fontSize:'1rem'}}>
-            I'm passionate about audiovisual arts and I have been working on <b>movies</b>, <b>photos</b>, and <b>musics</b> for a few years.
+            I’ve always been drawn by film making, photography and music. I’m well versed in many skills around audiovisual creation,
+            from shooting to post-production I love to work on audiovisual projects where my creativity and rigor can be an asset.
             This website as you guessed is strictly about the photos part of it.
             For more information about me and my projects check out my <a href="https://maximetouroute.github.io">portfolio website</a>
         </div>
