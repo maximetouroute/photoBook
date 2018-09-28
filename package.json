@@ -2,7 +2,7 @@
   "name": "photoBook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://maximetouroute.github.io/photoBook",
+  "homepage": "https://maximetouroute.github.io/photoBookTemplate",
   "dependencies": {
     "node-sass-chokidar": "0.0.3",
     "react": "^16.0.0",
